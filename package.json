@@ -1,15 +1,26 @@
 {
   "name": "project2",
   "version": "1.0.0",
-  "description": "project1 is a url shortner web app that can short url to distinct",
+  "description": "project1 is a url shortner web app that can short url to distinct of any length",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index"
   },
   "keywords": [
     "url",
     "shortner"
   ],
   "author": "sumitDevs",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mongoose": "^8.8.4",
+    "nanoid": "^3.3.8"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.16"
+  }
 }

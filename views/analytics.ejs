@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Count</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="min-h-screen flex flex-col py-10">
+        <div class="bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto  w-full text-center">
+            <h1 class="text-2xl font-bold text-gray-700 mb-4">Visitor Count</h1>
+            <p class="text-lg">You are viewing the page:</p>
+            <p class="text-xl font-semibold text-blue-600 mb-4"><%= url.shortUrl %></p>
+            <div class="py-4 border-t">
+                <p class="text-lg text-gray-500">Total Visitors:</p>
+                <p class="text-4xl font-bold text-green-500"><%= url.visit %></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
