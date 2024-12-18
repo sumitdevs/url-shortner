@@ -15,6 +15,10 @@ const urlSchema = mongoose.Schema({
         required:true,
         unique:true
     },
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+    },
     visit:{
         type:Number,
         default:0

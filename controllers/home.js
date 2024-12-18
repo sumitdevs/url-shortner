@@ -1,12 +1,19 @@
 const Url = require('../models/url');
 const {nanoid} = require('nanoid');
+const {getUser} = require('../util/auth')
 
 const handleHomeGet = async (req, res)=>{
+    const uid = req.cookies.uid;
     const { shortUrl } = req.query;
-    res.render('index', {url:shortUrl});
+    if(!uid) return res.render('index', {user:''});
+    const user = getUser(uid);
+    if(user) return res.render('index', {user:user, url:shortUrl})
+    else return  res.render('index', {user:''});
 }
 
 const handleHomePost = async (req,res)=>{
+    const uid = req.cookies.uid;
+    const user = getUser(uid);
     const {url} = req.body;
     const host = req.headers.host;
     const protocol = req.protocol;
@@ -15,7 +22,8 @@ const handleHomePost = async (req,res)=>{
         const newurl = new Url({
             originalUrl:url,
             shortUrl:`${protocol}://${host}/${shortID}`,
-            shortID: shortID
+            shortID: shortID,
+            user: user._id
         });
         const data = await newurl.save();
         res.status(202).redirect(`/?shortUrl=${encodeURIComponent(data.shortUrl)}`);

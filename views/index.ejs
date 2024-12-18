@@ -1,51 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
-    <link rel="stylesheet" href="/styles/style.css">
-</head>
-<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col items-center py-10">
-    <div class="container mx-auto max-w-lg bg-white rounded-lg shadow p-6">
-        <h1 class="text-2xl font-bold text-center mb-6">URL Shortener</h1>
-        <form action="/" method="POST" class="mb-6">
-            <div class="mb-4">
-                <label for="url" class="block text-sm font-medium text-gray-700">Enter URL</label>
-                <input 
-                    type="url" 
-                    id="url" 
-                    name="url" 
-                    required
-                    placeholder="https://example.com" 
-                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                >
-            </div>
-            <button 
-                type="submit" 
-                class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition"
-            >
-                Shorten URL
-            </button>
-        </form>
-        <% if(url) { %>
-        <div class="flex items-center bg-gray-50 border border-gray-300 rounded-lg p-4 shadow-sm">
-            <input 
-                id="urlToCopy" 
-                type="text" 
-                value="<%= url %>"
-                readonly 
-                class="flex-1 bg-transparent text-gray-800 truncate focus:outline-none"
-            />
-            <button 
-                onclick="copyToClipboard()" 
-                class="ml-4 bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition"
-            >
-                Copy
-            </button>
-        </div>
-        <% } %>
-    </div>
-    <script src="/scripts/script.js"></script>
-</body>
-</html>
+<%- include('partials/header') %>
+<div class="h-screen flex flex-col items-center justify-center">
+    <% if(!user){ %>
+        <h2 class="text-4xl text-green-500">Simplify Your URLs, Amplify Your Reach</h2>
+        <a href="/signup" class="mt-4 px-4 py-2 bg-blue-500 rounded-lg">Get Started</a>
+    <% } else { %>
+    <%- include('shorturl') %>
+    <% } %>
+</div>
+<script src="/scripts/script.js"></script>
+<%- include('partials/footer') %>
