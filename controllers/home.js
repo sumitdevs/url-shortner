@@ -5,10 +5,10 @@ const {getUser} = require('../util/auth')
 const handleHomeGet = async (req, res)=>{
     const uid = req.cookies.uid;
     const { shortUrl } = req.query;
-    if(!uid) return res.render('index', {user:''});
+    if(!uid) return res.render('index', {user:'',site:{title:'short link'}});
     const user = getUser(uid);
-    if(user) return res.render('index', {user:user, url:shortUrl})
-    else return  res.render('index', {user:''});
+    if(user) return res.render('index', {user:user, url:shortUrl,site:{title:'short link'}});
+    else return  res.render('index', {user:'',site:{title:'short link'}});
 }
 
 const handleHomePost = async (req,res)=>{
@@ -50,8 +50,14 @@ const handleHomeById = async(req,res)=>{
     }
 }
 
+const handleLogout = (req,res)=>{
+    res.clearCookie('uid');
+    return res.status(200).redirect('/');
+}
+
 module.exports = {
     handleHomeGet,
     handleHomePost,
-    handleHomeById
+    handleHomeById,
+    handleLogout
 }

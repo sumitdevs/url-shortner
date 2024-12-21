@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= site.title %></title>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
-        <div class="w-full bg-white py-10 shadow-md fixed z-20">
-            <div class="max-w-7xl flex justify-between mx-auto w-full px-10">
+        <div class="w-full  bg-white shadow-md fixed z-20">
+            <div class="max-w-7xl relative flex h-16  justify-between items-center mx-auto w-full px-10">
                 <div>
                     <a href="/">shortlink</a>
                 </div>
-                <div>
                     <nav>
                         <ul class="flex gap-x-10">
                             <li><a href="/">Home</a></li>
@@ -25,6 +24,14 @@
                             <% } %>
                         </ul>
                     </nav>
+                <% if(user){ %>
+                    <div class="">
+                        <button onclick="displayProfile()" class="ml-10 w-10 aspect-square  text-blue-500 border flex items-center justify-center rounded-full" href=""><i class="fa-solid fa-user"></i></button>
+                    </div>
+                <% } %>
+                <div id="profile" class="hidden absolute right-0 bg-white p-4 text-center top-20 shadow-md">
+                    <p class="font-bold"><%= user.name %></p>
+                    <a href="/logout">logout</a>
                 </div>
             </div>
         </div>
