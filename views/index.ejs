@@ -1,8 +1,24 @@
 <%- include('partials/header') %>
-<div class="h-screen flex flex-col items-center justify-center">
+<div class="h-screen flex items-center justify-center">
     <% if(!user){ %>
-        <h2 class="text-4xl text-green-500">Simplify Your URLs, Amplify Your Reach</h2>
-        <a href="/signup" class="mt-4 px-4 py-2 bg-blue-500 rounded-lg">Get Started</a>
+        <div class="flex flex-col md:flex-row-reverse items-center w-full max-w-7xl">
+            <!-- Left Column -->
+            <div class="flex-1 flex flex-col items-start justify-center px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-green-500 mb-4">
+                    Simplify Your URLs, Amplify Your Reach
+                </h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    Shorten, share, and track your links with ease. Boost your online presence today!
+                </p>
+                <a href="/signup" class="px-6 py-3 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">
+                    Get Started
+                </a>
+            </div>
+            <!-- Right Column -->
+            <div class="flex-1 flex items-center justify-center px-6 mt-8 md:mt-0">
+                <img src="/images/url.svg" alt="URL Shortener Illustration" class="w-full max-w-md">
+            </div>
+        </div>
     <% } else { %>
     <%- include('shorturl') %>
     <% } %>
