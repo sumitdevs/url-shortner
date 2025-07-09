@@ -9,18 +9,18 @@
 </head>
 <body>
     <header>
-        <div class="w-full  bg-white shadow-md fixed z-20">
+        <div class="w-full bg-white shadow-md fixed z-20">
             <div class="max-w-7xl relative flex h-16  justify-between items-center mx-auto w-full px-10">
                 <div>
                     <a href="/">shortlink</a>
                 </div>
                     <nav>
                         <ul class="flex gap-x-10">
-                            <li><a href="/">Home</a></li>
+                            <li><a class="<%= currentPath === '/' ? 'text-blue-500' : 'text-black' %>"  href="/">Home</a></li>
                             <% if(user) { %>
-                                <li><a href="/url">Url</a></li>
+                                <li><a class="<%= currentPath === '/url' ? 'text-blue-500' : 'text-black' %>" href="/url">Url</a></li>
                             <% } else { %>
-                                <li><a href="/login">login</a></li>
+                                <li><a class="<%= currentPath === '/login' ? 'text-blue-500' : 'text-black' %>" href="/login">login</a></li>
                             <% } %>
                         </ul>
                     </nav>

@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  
+    nav a {
+        @apply hover:text-blue-500 transition-colors duration-300 ease-linear
+    }
+}

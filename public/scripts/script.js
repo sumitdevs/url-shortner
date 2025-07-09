@@ -1,5 +1,10 @@
 
-
+window.addEventListener('DOMContentLoaded', () => {
+const el = document.getElementById('main');
+el.classList.remove('opacity-0', 'translate-y-4');
+el.classList.add('opacity-100', 'translate-y-0');
+});
+    
 function copyToClipboard() {
     const urlInput = document.getElementById('urlToCopy');
     urlInput.select();

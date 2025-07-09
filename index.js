@@ -16,6 +16,12 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended:false}));
 app.use(express.static('public'));
 app.use(cookieParser());
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+//   res.locals.user = req.user || null;
+  next();
+});
+
 
 
 app.use('/url', restrictToLoggedinUserOnly, urlRouter);
