@@ -28,7 +28,11 @@ const handleLoginPost = async (req,res) =>{
         }
         if(user){
             const token = setUser(user);
-            res.cookie('uid', token);
+            res.cookie('uid', token,{
+                maxAge:60*60*1000,
+                httpOnly:true,
+                secure:true
+            });
             res.status(200).redirect('/');
         } 
        
